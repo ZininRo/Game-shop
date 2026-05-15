@@ -45,11 +45,11 @@ REST API интернет-магазина настольных игр.
 │               Spring Boot API                   │
 │           http://localhost:8080                 │
 │                                                 │
-│  JwtAuthFilter → Controller → Service → Repo   │
+│  JwtAuthFilter → Controller → Service → Repo    │
 └──────────────────────┬──────────────────────────┘
                        │ JPA / Hibernate
 ┌──────────────────────▼──────────────────────────┐
-│              PostgreSQL (boardgame_shop)         │
+│              PostgreSQL (boardgame_shop)        │
 └─────────────────────────────────────────────────┘
 ```
 
