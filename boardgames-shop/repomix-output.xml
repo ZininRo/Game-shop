@@ -1,0 +1,4914 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: src/**/*, pom.xml
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+pom.xml
+src/main/java/boardgames_shop/BoardgamesShopApplication.java
+src/main/java/boardgames_shop/config/DatabaseInitializer.java
+src/main/java/boardgames_shop/config/SecurityConfig.java
+src/main/java/boardgames_shop/controller/AdminController.java
+src/main/java/boardgames_shop/controller/AuthController.java
+src/main/java/boardgames_shop/controller/CartController.java
+src/main/java/boardgames_shop/controller/GameController.java
+src/main/java/boardgames_shop/controller/HistoryController.java
+src/main/java/boardgames_shop/controller/ManagerController.java
+src/main/java/boardgames_shop/controller/ProfileController.java
+src/main/java/boardgames_shop/controller/ReportsController.java
+src/main/java/boardgames_shop/dto/admin/AdminOrderResponse.java
+src/main/java/boardgames_shop/dto/admin/AverageCheckDto.java
+src/main/java/boardgames_shop/dto/admin/ClientResponse.java
+src/main/java/boardgames_shop/dto/admin/CompareDto.java
+src/main/java/boardgames_shop/dto/admin/CreateEmployeeRequest.java
+src/main/java/boardgames_shop/dto/admin/CreateGameRequest.java
+src/main/java/boardgames_shop/dto/admin/EmployeeResponse.java
+src/main/java/boardgames_shop/dto/admin/GameResponse.java
+src/main/java/boardgames_shop/dto/admin/ItemDto.java
+src/main/java/boardgames_shop/dto/admin/OrderItemDto.java
+src/main/java/boardgames_shop/dto/admin/PeriodStatsDto.java
+src/main/java/boardgames_shop/dto/admin/SalesDayDto.java
+src/main/java/boardgames_shop/dto/admin/SalesOrderDto.java
+src/main/java/boardgames_shop/dto/admin/TopGameDto.java
+src/main/java/boardgames_shop/dto/admin/UpdateClientRequest.java
+src/main/java/boardgames_shop/dto/admin/UpdateEmployeeRequest.java
+src/main/java/boardgames_shop/dto/admin/UpdateGameRequest.java
+src/main/java/boardgames_shop/dto/admin/UpdateOrderAdminRequest.java
+src/main/java/boardgames_shop/dto/auth/LoginRequest.java
+src/main/java/boardgames_shop/dto/auth/LoginResponse.java
+src/main/java/boardgames_shop/dto/auth/RegisterRequest.java
+src/main/java/boardgames_shop/dto/cart/AddToCartRequest.java
+src/main/java/boardgames_shop/dto/cart/CartResponse.java
+src/main/java/boardgames_shop/dto/cart/UpdateCartItemRequest.java
+src/main/java/boardgames_shop/dto/game/GameDto.java
+src/main/java/boardgames_shop/dto/history/OrderHistoryResponse.java
+src/main/java/boardgames_shop/dto/manager/ManagerOrderResponse.java
+src/main/java/boardgames_shop/dto/manager/UpdateOrderRequest.java
+src/main/java/boardgames_shop/dto/profile/ProfileResponse.java
+src/main/java/boardgames_shop/dto/profile/UpdateProfileRequest.java
+src/main/java/boardgames_shop/entity/Client.java
+src/main/java/boardgames_shop/entity/Employee.java
+src/main/java/boardgames_shop/entity/Game.java
+src/main/java/boardgames_shop/entity/Order.java
+src/main/java/boardgames_shop/entity/OrderItem.java
+src/main/java/boardgames_shop/entity/OrderStatus.java
+src/main/java/boardgames_shop/entity/Role.java
+src/main/java/boardgames_shop/entity/User.java
+src/main/java/boardgames_shop/repository/ClientRepository.java
+src/main/java/boardgames_shop/repository/EmployeeRepository.java
+src/main/java/boardgames_shop/repository/GameRepository.java
+src/main/java/boardgames_shop/repository/OrderItemRepository.java
+src/main/java/boardgames_shop/repository/OrderRepository.java
+src/main/java/boardgames_shop/repository/RoleRepository.java
+src/main/java/boardgames_shop/repository/UserRepository.java
+src/main/java/boardgames_shop/security/JwtAuthFilter.java
+src/main/java/boardgames_shop/security/JwtService.java
+src/main/java/boardgames_shop/service/AdminService.java
+src/main/java/boardgames_shop/service/AuthService.java
+src/main/java/boardgames_shop/service/CartService.java
+src/main/java/boardgames_shop/service/GameService.java
+src/main/java/boardgames_shop/service/HistoryService.java
+src/main/java/boardgames_shop/service/ManagerService.java
+src/main/java/boardgames_shop/service/ProfileService.java
+src/main/java/boardgames_shop/service/ReportsService.java
+src/main/resources/application.properties
+src/main/resources/data.sql
+src/main/resources/schema.sql
+src/test/java/boardgames_shop/BoardgamesShopApplicationTests.java
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="pom.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.shop</groupId>
+	<artifactId>boardgames-shop</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name/>
+	<description/>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<annotationProcessorPaths>
+								<path>
+									<groupId>org.projectlombok</groupId>
+									<artifactId>lombok</artifactId>
+								</path>
+							</annotationProcessorPaths>
+						</configuration>
+					</execution>
+					<execution>
+						<id>default-testCompile</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+						<configuration>
+							<annotationProcessorPaths>
+								<path>
+									<groupId>org.projectlombok</groupId>
+									<artifactId>lombok</artifactId>
+								</path>
+							</annotationProcessorPaths>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+</file>
+
+<file path="src/main/java/boardgames_shop/BoardgamesShopApplication.java">
+package boardgames_shop;
+
+import boardgames_shop.config.DatabaseInitializer;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+
+@SpringBootApplication
+public class BoardgamesShopApplication {
+
+	public static void main(String[] args) {
+
+
+		runDatabaseInitializer();
+
+
+		SpringApplication.run(BoardgamesShopApplication.class, args);
+	}
+
+	private static void runDatabaseInitializer() {
+
+		try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext()) {
+
+			// Подключаем application.properties
+			org.springframework.core.env.ConfigurableEnvironment env =
+					new org.springframework.core.env.StandardEnvironment();
+			org.springframework.core.io.support.ResourcePropertySource props =
+					new org.springframework.core.io.support.ResourcePropertySource(
+							"classpath:application.properties");
+			env.getPropertySources().addFirst(props);
+			ctx.setEnvironment(env);
+
+
+			ctx.register(DatabaseInitializer.class);
+			ctx.refresh();
+
+
+			DatabaseInitializer initializer = ctx.getBean(DatabaseInitializer.class);
+			initializer.initialize();
+		} catch (Exception e) {
+			System.err.println("КРИТИЧЕСКАЯ ОШИБКА при инициализации БД: " + e.getMessage());
+			System.err.println("Проверьте параметр init.datasource.password в application.properties");
+			throw new RuntimeException(e);
+		}
+	}
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/config/DatabaseInitializer.java">
+package boardgames_shop.config;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.stream.Collectors;
+
+/**
+ * Инициализирует бд на новом пк (Минимальная миграция БД)
+ *
+ * Алгоритм:
+ * 1. Подключается к postgres от имени суперпользователя
+ * 2. Создаёт пользователя AdminRoma (если не существует)
+ * 3. Создаёт БД boardgame_shop (если не существует)
+ * 4. Выдаёт права AdminRoma на БД
+ * 5. Подключается к boardgame_shop и выполняет schema.sql (если таблиц ещё нет)
+ * 6. Выполняет data.sql (если таблица roles пуста)
+ */
+@Component
+@Order(1)
+public class DatabaseInitializer {
+
+    private static final Logger log = LoggerFactory.getLogger(DatabaseInitializer.class);
+
+    @Value("${init.datasource.url}")
+    private String initUrl;
+
+    @Value("${init.datasource.username}")
+    private String initUsername;
+
+    @Value("${init.datasource.password}")
+    private String initPassword;
+
+    @Value("${spring.datasource.url}")
+    private String appUrl;
+
+    @Value("${spring.datasource.username}")
+    private String appUsername;
+
+    @Value("${spring.datasource.password}")
+    private String appPassword;
+
+    // Имя БД и пользователя извлекаем из URL/username, чтобы не дублировать в конфиге
+    private static final String DB_NAME   = "boardgame_shop";
+    private static final String APP_USER  = "AdminRoma";
+
+    // Метод вызывается вручную из BoardgamesShopApplication до старта Spring-контекста
+    public void initialize() {
+
+        log.info("=== DatabaseInitializer: старт ===");
+
+        try {
+            step1_createUserAndDatabase();
+            step2_createSchemaAndData();
+            log.info("=== DatabaseInitializer: завершено успешно ===");
+        } catch (Exception e) {
+            log.error("=== DatabaseInitializer: критическая ошибка ===", e);
+            throw new RuntimeException("Не удалось инициализировать базу данных. " +
+                    "Проверьте пароль суперпользователя postgres в application.properties " +
+                    "(параметр init.datasource.password)", e);
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // ШАГ 1: создать пользователя и БД (подключение через postgres)
+    // ─────────────────────────────────────────────────────────────
+    private void step1_createUserAndDatabase() throws Exception {
+
+        log.info("Подключение к postgres для создания пользователя и БД...");
+
+        try (Connection conn = DriverManager.getConnection(initUrl, initUsername, initPassword);
+             Statement stmt = conn.createStatement()) {
+
+            // 1a. Создать пользователя AdminRoma (если не существует)
+            boolean userExists = false;
+            try (ResultSet rs = stmt.executeQuery(
+                    "SELECT 1 FROM pg_roles WHERE rolname = '" + APP_USER + "'")) {
+                userExists = rs.next();
+            }
+
+            if (!userExists) {
+                log.info("Создаю пользователя {}...", APP_USER);
+                stmt.execute(
+                        "CREATE USER \"" + APP_USER + "\" WITH PASSWORD '" + appPassword + "'"
+                );
+                log.info("Пользователь {} создан.", APP_USER);
+            } else {
+                log.info("Пользователь {} уже существует.", APP_USER);
+            }
+
+            // 1b. Создать БД boardgame_shop (если не существует)
+            boolean dbExists = false;
+            try (ResultSet rs = stmt.executeQuery(
+                    "SELECT 1 FROM pg_database WHERE datname = '" + DB_NAME + "'")) {
+                dbExists = rs.next();
+            }
+
+            if (!dbExists) {
+                log.info("Создаю базу данных {}...", DB_NAME);
+                // CREATE DATABASE нельзя выполнять в транзакции — autoCommit должен быть true
+                conn.setAutoCommit(true);
+                stmt.execute(
+                        "CREATE DATABASE \"" + DB_NAME + "\" OWNER \"" + APP_USER + "\""
+                );
+                log.info("База данных {} создана.", DB_NAME);
+            } else {
+                log.info("База данных {} уже существует.", DB_NAME);
+            }
+
+            // 1c. Выдать права на БД
+            conn.setAutoCommit(true);
+            stmt.execute(
+                    "GRANT ALL PRIVILEGES ON DATABASE \"" + DB_NAME + "\" TO \"" + APP_USER + "\""
+            );
+            log.info("Права на БД {} выданы пользователю {}.", DB_NAME, APP_USER);
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // ШАГ 2: создать схему и данные (подключение через AdminRoma)
+    // ─────────────────────────────────────────────────────────────
+    private void step2_createSchemaAndData() throws Exception {
+
+        log.info("Подключение к {} для проверки схемы...", DB_NAME);
+
+        try (Connection conn = DriverManager.getConnection(appUrl, appUsername, appPassword)) {
+
+            // Проверяем: таблица roles существует?
+            boolean schemaExists = tableExists(conn, "roles");
+
+            if (!schemaExists) {
+                log.info("Схема не найдена. Выполняю schema.sql...");
+                executeSqlFile(conn, "schema.sql");
+                log.info("schema.sql выполнен успешно.");
+            } else {
+                log.info("Схема уже существует, schema.sql пропущен.");
+            }
+
+            // Проверяем: есть ли данные в таблице roles?
+            boolean hasData = false;
+            try (Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM roles")) {
+                if (rs.next()) {
+                    hasData = rs.getInt(1) > 0;
+                }
+            }
+
+            if (!hasData) {
+                log.info("Данные не найдены. Выполняю data.sql...");
+                executeSqlFile(conn, "data.sql");
+                log.info("data.sql выполнен успешно.");
+
+                log.info("Сбрасываю sequences после импорта данных...");
+                resetSequences(conn);
+                log.info("Sequences сброшены.");
+            } else {
+                log.info("Данные уже существуют, data.sql пропущен.");
+            }
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // ШАГ 3: сброс sequences (после вставки данных с явными id)
+    // ─────────────────────────────────────────────────────────────
+
+    /**
+     * После INSERT с явными id sequence остаётся на 1 и при следующей вставке
+     * Hibernate получает уже занятый id → duplicate key.
+     *
+     * Для каждой таблицы с IDENTITY-колонкой выполняем:
+     *   SELECT setval(sequence_name, MAX(id))
+     * Это сдвигает sequence на максимальный существующий id,
+     * и следующая вставка получит MAX(id) + 1.
+     */
+    private void resetSequences(Connection conn) throws Exception {
+
+        // Таблицы проекта с IDENTITY primary key (BIGINT GENERATED BY DEFAULT AS IDENTITY)
+        String[] tables = {"roles", "users", "clients", "employees", "games", "orders", "order_items"};
+
+        conn.setAutoCommit(true);
+        try (Statement stmt = conn.createStatement()) {
+            for (String table : tables) {
+                // Получаем имя sequence для данной таблицы
+                String seqQuery = String.format(
+                        "SELECT pg_get_serial_sequence('%s', 'id')", table);
+
+                String sequenceName = null;
+                try (ResultSet rs = stmt.executeQuery(seqQuery)) {
+                    if (rs.next()) {
+                        sequenceName = rs.getString(1);
+                    }
+                }
+
+                if (sequenceName == null) {
+                    log.warn("Sequence для таблицы {} не найден, пропускаю.", table);
+                    continue;
+                }
+
+                // Получаем максимальный id в таблице
+                long maxId = 0;
+                try (ResultSet rs = stmt.executeQuery("SELECT COALESCE(MAX(id), 0) FROM " + table)) {
+                    if (rs.next()) {
+                        maxId = rs.getLong(1);
+                    }
+                }
+
+                if (maxId > 0) {
+                    // setval(sequence, value) — следующий nextval вернёт value + 1
+                    stmt.execute(String.format("SELECT setval('%s', %d)", sequenceName, maxId));
+                    log.info("  {} → sequence сброшен на {}", table, maxId);
+                } else {
+                    log.info("  {} → таблица пуста, sequence не тронут.", table);
+                }
+            }
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Вспомогательные методы
+    // ─────────────────────────────────────────────────────────────
+
+    private boolean tableExists(Connection conn, String tableName) throws Exception {
+        try (ResultSet rs = conn.getMetaData().getTables(
+                null, "public", tableName, new String[]{"TABLE"})) {
+            return rs.next();
+        }
+    }
+
+    /**
+     * Читает SQL-файл из classpath и выполняет каждый statement.
+     * Разделитель — точка с запятой (;).
+     * Пустые строки и комментарии (--) пропускаются.
+     */
+    private void executeSqlFile(Connection conn, String fileName) throws Exception {
+
+        ClassPathResource resource = new ClassPathResource(fileName);
+
+        String sql;
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8))) {
+            sql = reader.lines().collect(Collectors.joining("\n"));
+        }
+
+        // Убираем блочные комментарии /* ... */
+        sql = sql.replaceAll("/\\*.*?\\*/", "");
+
+        String[] statements = sql.split(";");
+
+        conn.setAutoCommit(false);
+        try (Statement stmt = conn.createStatement()) {
+            for (String statement : statements) {
+                // Убираем строчные комментарии и пробелы
+                String cleaned = removeLineComments(statement).trim();
+                if (!cleaned.isEmpty()) {
+                    stmt.execute(cleaned);
+                }
+            }
+            conn.commit();
+        } catch (Exception e) {
+            conn.rollback();
+            throw e;
+        }
+    }
+
+    private String removeLineComments(String sql) {
+        StringBuilder result = new StringBuilder();
+        for (String line : sql.split("\n")) {
+            String trimmed = line.trim();
+            if (!trimmed.startsWith("--")) {
+                // Убираем inline-комментарий в конце строки
+                int commentIdx = line.indexOf("--");
+                if (commentIdx >= 0) {
+                    result.append(line, 0, commentIdx);
+                } else {
+                    result.append(line);
+                }
+                result.append("\n");
+            }
+        }
+        return result.toString();
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/config/SecurityConfig.java">
+package boardgames_shop.config;
+
+import boardgames_shop.security.JwtAuthFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    private final JwtAuthFilter jwtAuthFilter;
+
+    public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
+        this.jwtAuthFilter = jwtAuthFilter;
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .csrf(csrf -> csrf.disable())
+
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+
+                .authorizeHttpRequests(auth -> auth
+
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                        // AUTH
+                        .requestMatchers("/api/auth/**").permitAll()
+
+                        // ADMIN
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/admin/**").hasRole("ADMIN")
+
+                        // MANAGER
+                        .requestMatchers("/api/manager/**").hasRole("MANAGER")
+
+                        // BUYER
+                        .requestMatchers("/api/games/**").hasRole("BUYER")
+                        .requestMatchers("/api/cart/**").hasRole("BUYER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/cart/**").hasRole("BUYER")
+                        .requestMatchers("/api/orders/**").hasRole("BUYER")
+                        .requestMatchers("/api/profile/**").hasRole("BUYER")
+
+
+
+
+                        // остальные требуют авторизации
+                        .anyRequest().authenticated()
+                )
+
+                .addFilterBefore(jwtAuthFilter,
+                        UsernamePasswordAuthenticationFilter.class
+                );
+
+        return http.build();
+    }
+
+    // CORS CONFIG
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+
+        CorsConfiguration configuration = new CorsConfiguration();
+
+        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/controller/AdminController.java">
+package boardgames_shop.controller;
+
+import boardgames_shop.dto.admin.*;
+import boardgames_shop.service.AdminService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/admin")
+public class AdminController {
+
+    private final AdminService adminService;
+
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
+    }
+
+    // Сотрудники
+    @GetMapping("/employees")
+    public List<EmployeeResponse> getEmployees() {
+        return adminService.getEmployees();
+    }
+
+    @PostMapping("/employees")
+    public void createEmployee(@RequestBody CreateEmployeeRequest request) {
+        adminService.createEmployee(request);
+    }
+
+    @PutMapping("/employees/{id}")
+    public void updateEmployee(
+            @PathVariable Long id,
+            @RequestBody UpdateEmployeeRequest request
+    ) {
+        adminService.updateEmployee(id, request);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public void deleteEmployee(@PathVariable Long id) {
+        adminService.deleteEmployee(id);
+    }
+
+    // Покупатели
+    @GetMapping("/clients")
+    public List<ClientResponse> getClients() {
+        return adminService.getClients();
+    }
+
+    @PutMapping("/clients/{id}")
+    public void updateClient(
+            @PathVariable Long id,
+            @RequestBody UpdateClientRequest request
+    ) {
+        adminService.updateClient(id, request);
+    }
+
+    @DeleteMapping("/clients/{id}")
+    public void deleteClient(@PathVariable Long id) {
+        adminService.deleteClient(id);
+    }
+
+    // Игры
+
+    @GetMapping("/games")
+    public List<GameResponse> getGames() {
+        return adminService.getGames();
+    }
+
+    @PostMapping("/games")
+    public void createGame(@RequestBody CreateGameRequest request) {
+        adminService.createGame(request);
+    }
+
+    @PutMapping("/games/{id}")
+    public void updateGame(
+            @PathVariable Long id,
+            @RequestBody UpdateGameRequest request
+    ) {
+        adminService.updateGame(id, request);
+    }
+
+    @DeleteMapping("/games/{id}")
+    public void deleteGame(@PathVariable Long id) {
+        adminService.deleteGame(id);
+    }
+
+    // Заказы
+
+    @GetMapping("/orders")
+    public List<AdminOrderResponse> getOrders() {
+        return adminService.getOrders();
+    }
+
+    @PutMapping("/orders/{id}")
+    public void updateOrder(
+            @PathVariable Long id,
+            @RequestBody UpdateOrderAdminRequest request
+    ) {
+        adminService.updateOrder(id, request);
+    }
+
+    // ===== Новые фильтры (отдельные endpoints) =====
+
+    /**
+     * Последние N заказов по дате оформления.
+     * GET /api/admin/orders/last?limit=10
+     * limit — по умолчанию 10, максимум 50.
+     */
+    @GetMapping("/orders/last")
+    public List<AdminOrderResponse> getLastOrders(
+            @RequestParam(defaultValue = "10") int limit
+    ) {
+        if (limit < 1)  limit = 1;
+        if (limit > 50) limit = 50;
+        return adminService.getLastOrders(limit);
+    }
+
+    /**
+     * Заказы с несколькими уникальными позициями (>1 игры в заказе).
+     * GET /api/admin/orders/multi-item
+     */
+    @GetMapping("/orders/multi-item")
+    public List<AdminOrderResponse> getOrdersWithMultipleItems() {
+        return adminService.getOrdersWithMultipleItems();
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/controller/AuthController.java">
+package boardgames_shop.controller;
+
+import boardgames_shop.dto.auth.LoginRequest;
+import boardgames_shop.dto.auth.LoginResponse;
+import boardgames_shop.dto.auth.RegisterRequest;
+import boardgames_shop.service.AuthService;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/auth")
+@CrossOrigin
+public class AuthController {
+
+    private final AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
+    @PostMapping("/register")
+    public void register(@RequestBody RegisterRequest request) {
+        authService.register(request);
+    }
+
+    @PostMapping("/login")
+    public LoginResponse login(@RequestBody LoginRequest request) {
+        return authService.login(request);
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/controller/CartController.java">
+package boardgames_shop.controller;
+
+import boardgames_shop.dto.cart.AddToCartRequest;
+import boardgames_shop.dto.cart.CartResponse;
+import boardgames_shop.dto.cart.UpdateCartItemRequest;
+import boardgames_shop.service.CartService;
+import org.springframework.web.bind.annotation.*;
+
+
+@RestController
+@RequestMapping("/api/cart")
+@CrossOrigin
+public class CartController {
+
+    private final CartService cartService;
+
+    public CartController(CartService cartService) {
+        this.cartService = cartService;
+    }
+
+    @PostMapping("/add")
+    public void addToCart(@RequestBody AddToCartRequest request) {
+        cartService.addToCart(request);
+    }
+
+    @GetMapping
+    public CartResponse getCart() {
+        return cartService.getCart();
+    }
+
+    @PostMapping("/checkout")
+    public void checkout() {
+        cartService.checkout();
+    }
+
+    @PutMapping("/update")
+    public void updateQuantity(
+            @RequestBody UpdateCartItemRequest request
+    ) {
+        cartService.updateQuantity(request);
+    }
+
+    @DeleteMapping("/remove/{gameId}")
+    public void removeItem(@PathVariable Long gameId) {
+        cartService.removeItem(gameId);
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/controller/GameController.java">
+package boardgames_shop.controller;
+
+import boardgames_shop.dto.game.GameDto;
+import boardgames_shop.service.GameService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/games")
+@CrossOrigin
+public class GameController {
+
+    private final GameService gameService;
+
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
+    }
+
+    // Каталог
+    @GetMapping
+    public List<GameDto> getAllGames() {
+        return gameService.getActiveGames();
+    }
+
+    // Детальная страница
+    @GetMapping("/{id}")
+    public GameDto getGame(@PathVariable Long id) {
+        return gameService.getGameById(id);
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/controller/HistoryController.java">
+package boardgames_shop.controller;
+
+import boardgames_shop.dto.history.OrderHistoryResponse;
+import boardgames_shop.service.HistoryService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/orders")
+public class HistoryController {
+
+    private final HistoryService historyService;
+
+    public HistoryController(HistoryService historyService) {
+        this.historyService = historyService;
+    }
+
+    @GetMapping
+    public List<OrderHistoryResponse> getHistory() {
+        return historyService.getHistory();
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/controller/ManagerController.java">
+package boardgames_shop.controller;
+
+import boardgames_shop.dto.manager.*;
+import boardgames_shop.service.ManagerService;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/manager")
+public class ManagerController {
+
+    private final ManagerService managerService;
+
+    public ManagerController(ManagerService managerService) {
+        this.managerService = managerService;
+    }
+
+    @GetMapping("/new")
+    public List<ManagerOrderResponse> newOrders() {
+        return managerService.getNewOrders();
+    }
+
+    @PostMapping("/assign/{id}")
+    public void assign(@PathVariable Long id) {
+        managerService.assignOrder(id);
+    }
+
+    @GetMapping("/my")
+    public List<ManagerOrderResponse> myOrders() {
+        return managerService.getMyOrders();
+    }
+
+    @GetMapping("/order/{id}")
+    public ManagerOrderResponse getOrder(@PathVariable Long id) {
+        return managerService.getOrderById(id);
+    }
+
+    @PutMapping("/order/{id}")
+    public void update(
+            @PathVariable Long id,
+            @RequestBody UpdateOrderRequest request
+    ) {
+        managerService.updateOrder(id, request);
+    }
+
+    @GetMapping("/all")
+    public List<ManagerOrderResponse> allOrders() {
+        return managerService.getAllOrders();
+    }
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/controller/ProfileController.java">
+package boardgames_shop.controller;
+
+import boardgames_shop.dto.profile.ProfileResponse;
+import boardgames_shop.dto.profile.UpdateProfileRequest;
+import boardgames_shop.service.ProfileService;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/profile")
+public class ProfileController {
+
+    private final ProfileService profileService;
+
+    public ProfileController(ProfileService profileService) {
+        this.profileService = profileService;
+    }
+
+    @GetMapping
+    public ProfileResponse getProfile() {
+        return profileService.getProfile();
+    }
+
+    @PutMapping
+    public void updateProfile(
+            @RequestBody UpdateProfileRequest request
+    ) {
+        profileService.updateProfile(request);
+    }
+
+    @DeleteMapping
+    public void deleteProfile() {
+        profileService.deleteProfile();
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/controller/ReportsController.java">
+package boardgames_shop.controller;
+
+import boardgames_shop.dto.admin.*;
+import boardgames_shop.service.ReportsService;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/admin/reports/sales")
+public class ReportsController {
+
+    private final ReportsService reportsService;
+
+    public ReportsController(ReportsService reportsService) {
+        this.reportsService = reportsService;
+    }
+
+    /**
+     * График за месяц
+     * GET /api/admin/reports/sales/month?year=2026&month=3
+     */
+    @GetMapping("/month")
+    public List<SalesDayDto> getMonthlySales(
+            @RequestParam int year,
+            @RequestParam int month
+    ) {
+        return reportsService.getMonthlySales(year, month);
+    }
+
+    /**
+     * Детализация дня (клик по точке на графике)
+     * GET /api/admin/reports/sales/day?date=2026-03-15
+     */
+    @GetMapping("/day")
+    public List<SalesOrderDto> getDaySales(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
+    ) {
+        return reportsService.getDaySales(date);
+    }
+
+    /**
+     * Статистика за произвольный период
+     * GET /api/admin/reports/sales/period?from=2026-01-01&to=2026-03-31
+     */
+    @GetMapping("/period")
+    public PeriodStatsDto getPeriodStats(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to
+    ) {
+        return reportsService.getPeriodStats(from, to);
+    }
+
+    /**
+     * Сравнение текущего месяца с предыдущим
+     * GET /api/admin/reports/sales/compare?year=2026&month=3
+     */
+    @GetMapping("/compare")
+    public CompareDto compareMonths(
+            @RequestParam int year,
+            @RequestParam int month
+    ) {
+        return reportsService.compareMonths(year, month);
+    }
+
+    /**
+     * Топ игра за месяц
+     * GET /api/admin/reports/sales/top-game?year=2026&month=3
+     */
+    @GetMapping("/top-game")
+    public TopGameDto getTopGame(
+            @RequestParam int year,
+            @RequestParam int month
+    ) {
+        return reportsService.getTopGame(year, month);
+    }
+
+    /**
+     * Средний чек за месяц
+     * GET /api/admin/reports/sales/average-check?year=2026&month=3
+     */
+    @GetMapping("/average-check")
+    public AverageCheckDto getAverageCheck(
+            @RequestParam int year,
+            @RequestParam int month
+    ) {
+        return reportsService.getAverageCheck(year, month);
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/AdminOrderResponse.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+public class AdminOrderResponse {
+
+    private Long id;
+    private String client;
+    private String manager;
+    private String status;
+    private LocalDateTime orderDate;
+    private LocalDateTime deliveryDate;
+    private BigDecimal total;
+
+    private List<OrderItemDto> items;
+
+    public List<OrderItemDto> getItems() { return items; }
+    public void setItems(List<OrderItemDto> items) { this.items = items; }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
+
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public LocalDateTime getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/AverageCheckDto.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+
+public class AverageCheckDto {
+
+    private BigDecimal averageCheck;
+
+    public AverageCheckDto() {}
+
+    public AverageCheckDto(BigDecimal averageCheck) {
+        this.averageCheck = averageCheck;
+    }
+
+    public BigDecimal getAverageCheck()                  { return averageCheck; }
+    public void setAverageCheck(BigDecimal averageCheck) { this.averageCheck = averageCheck; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/ClientResponse.java">
+package boardgames_shop.dto.admin;
+
+import java.time.LocalDate;
+
+public class ClientResponse {
+
+    private Long id;
+    private String name;
+    private String email;
+    private String phone;
+    private LocalDate birthDate;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/CompareDto.java">
+package boardgames_shop.dto.admin;
+
+public class CompareDto {
+
+    private double revenuePercent;
+    private double ordersPercent;
+    private double averageCheckPercent;
+
+    public CompareDto() {}
+
+    public double getRevenuePercent()                        { return revenuePercent; }
+    public void setRevenuePercent(double revenuePercent)     { this.revenuePercent = revenuePercent; }
+
+    public double getOrdersPercent()                         { return ordersPercent; }
+    public void setOrdersPercent(double ordersPercent)       { this.ordersPercent = ordersPercent; }
+
+    public double getAverageCheckPercent()                           { return averageCheckPercent; }
+    public void setAverageCheckPercent(double averageCheckPercent)   { this.averageCheckPercent = averageCheckPercent; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/CreateEmployeeRequest.java">
+package boardgames_shop.dto.admin;
+
+public class CreateEmployeeRequest {
+
+    private String name;
+    private String email;
+    private String password;
+    private String phone;
+    private String position;
+    private String role;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/CreateGameRequest.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+
+public class CreateGameRequest {
+
+    private String name;
+    private BigDecimal price;
+    private String description;
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public BigDecimal getPrice() { return price; }
+    public void setPrice(BigDecimal price) { this.price = price; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/EmployeeResponse.java">
+package boardgames_shop.dto.admin;
+public class EmployeeResponse {
+
+    private Long id;
+    private String name;
+    private String email;
+    private String phone;
+    private String position;
+    private String role;
+    private int    activeOrdersCount;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public int getActiveOrdersCount() { return activeOrdersCount; }
+    public void setActiveOrdersCount(int activeOrdersCount) { this.activeOrdersCount = activeOrdersCount; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/GameResponse.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+
+public class GameResponse {
+
+    private Long id;
+    private String name;
+    private BigDecimal price;
+    private String description;
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/ItemDto.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+
+public class ItemDto {
+
+    private String name;
+    private int quantity;
+    private BigDecimal price; // quantity × priceAtPurchase
+
+    public ItemDto() {}
+
+    public ItemDto(String name, int quantity, BigDecimal price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public String getName()                { return name; }
+    public void setName(String name)       { this.name = name; }
+
+    public int getQuantity()               { return quantity; }
+    public void setQuantity(int quantity)  { this.quantity = quantity; }
+
+    public BigDecimal getPrice()           { return price; }
+    public void setPrice(BigDecimal price) { this.price = price; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/OrderItemDto.java">
+package boardgames_shop.dto.admin;
+
+public class OrderItemDto {
+    private String name;
+    private Integer quantity;
+    private Integer price;
+
+    // Геттеры и сеттеры
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public Integer getQuantity() { return quantity; }
+    public void setQuantity(Integer quantity) { this.quantity = quantity; }
+    public Integer getPrice() { return price; }
+    public void setPrice(Integer price) { this.price = price; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/PeriodStatsDto.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+
+public class PeriodStatsDto {
+
+    private BigDecimal totalRevenue;
+    private int ordersCount;
+    private BigDecimal averageCheck;
+
+    public PeriodStatsDto() {}
+
+    public BigDecimal getTotalRevenue()                  { return totalRevenue; }
+    public void setTotalRevenue(BigDecimal totalRevenue) { this.totalRevenue = totalRevenue; }
+
+    public int getOrdersCount()                          { return ordersCount; }
+    public void setOrdersCount(int ordersCount)          { this.ordersCount = ordersCount; }
+
+    public BigDecimal getAverageCheck()                  { return averageCheck; }
+    public void setAverageCheck(BigDecimal averageCheck) { this.averageCheck = averageCheck; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/SalesDayDto.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+public class SalesDayDto {
+
+    private LocalDate date;
+    private BigDecimal totalAmount;
+
+    public SalesDayDto() {}
+
+    public SalesDayDto(LocalDate date, BigDecimal totalAmount) {
+        this.date = date;
+        this.totalAmount = totalAmount;
+    }
+
+    public LocalDate getDate()                       { return date; }
+    public void setDate(LocalDate date)              { this.date = date; }
+
+    public BigDecimal getTotalAmount()               { return totalAmount; }
+    public void setTotalAmount(BigDecimal totalAmount) { this.totalAmount = totalAmount; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/SalesOrderDto.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+public class SalesOrderDto {
+
+    private Long id;
+    private BigDecimal total;
+    private List<ItemDto> items;
+
+    public SalesOrderDto() {}
+
+    public Long getId()                    { return id; }
+    public void setId(Long id)             { this.id = id; }
+
+    public BigDecimal getTotal()           { return total; }
+    public void setTotal(BigDecimal total) { this.total = total; }
+
+    public List<ItemDto> getItems()               { return items; }
+    public void setItems(List<ItemDto> items)      { this.items = items; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/TopGameDto.java">
+package boardgames_shop.dto.admin;
+
+public class TopGameDto {
+
+    private String name;
+    private int totalSold;
+
+    public TopGameDto() {}
+
+    public TopGameDto(String name, int totalSold) {
+        this.name = name;
+        this.totalSold = totalSold;
+    }
+
+    public String getName()                { return name; }
+    public void setName(String name)       { this.name = name; }
+
+    public int getTotalSold()              { return totalSold; }
+    public void setTotalSold(int totalSold){ this.totalSold = totalSold; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/UpdateClientRequest.java">
+package boardgames_shop.dto.admin;
+
+import java.time.LocalDate;
+
+public class UpdateClientRequest {
+
+    private String name;
+    private String phone;
+    private LocalDate birthDate;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/UpdateEmployeeRequest.java">
+package boardgames_shop.dto.admin;
+
+public class UpdateEmployeeRequest {
+
+    private String name;
+    private String phone;
+    private String position;
+    private String role;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/UpdateGameRequest.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+
+public class UpdateGameRequest {
+
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private Boolean active;
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/admin/UpdateOrderAdminRequest.java">
+package boardgames_shop.dto.admin;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+public class UpdateOrderAdminRequest {
+
+    private Long managerId;
+    private LocalDateTime deliveryDate;
+    private String status;
+    private BigDecimal total;
+
+    public Long getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(Long managerId) {
+        this.managerId = managerId;
+    }
+
+    public LocalDateTime getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/auth/LoginRequest.java">
+package boardgames_shop.dto.auth;
+public class LoginRequest {
+
+    private String email;
+    private String password;
+
+    public LoginRequest() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/auth/LoginResponse.java">
+package boardgames_shop.dto.auth;
+
+public class LoginResponse {
+
+    private Long userId;
+    private String role;
+    private String token;
+
+    public LoginResponse() {
+    }
+
+    public LoginResponse(Long userId, String role, String token) {
+        this.userId = userId;
+        this.role = role;
+        this.token = token;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/auth/RegisterRequest.java">
+package boardgames_shop.dto.auth;
+
+import java.time.LocalDate;
+
+public class RegisterRequest {
+
+    private String name;
+    private String email;
+    private String password;
+    private String phone;
+    private LocalDate birthDate;
+
+    public RegisterRequest() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/cart/AddToCartRequest.java">
+package boardgames_shop.dto.cart;
+
+public class AddToCartRequest {
+
+    private Long gameId;
+    private Integer quantity;
+
+    public AddToCartRequest() {
+    }
+
+    public Long getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(Long gameId) {
+        this.gameId = gameId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/cart/CartResponse.java">
+package boardgames_shop.dto.cart;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+public class CartResponse {
+
+    private List<CartItem> items;
+    private BigDecimal total;
+
+    public CartResponse() {
+    }
+
+    public List<CartItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<CartItem> items) {
+        this.items = items;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+    public static class CartItem {
+
+        private Long gameId;
+        private String name;
+        private Integer quantity;
+        private BigDecimal price;
+
+        public CartItem() {
+        }
+
+        public Long getGameId() {
+            return gameId;
+        }
+
+        public void setGameId(Long gameId) {
+            this.gameId = gameId;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(Integer quantity) {
+            this.quantity = quantity;
+        }
+
+        public BigDecimal getPrice() {
+            return price;
+        }
+
+        public void setPrice(BigDecimal price) {
+            this.price = price;
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/cart/UpdateCartItemRequest.java">
+package boardgames_shop.dto.cart;
+
+public class UpdateCartItemRequest {
+
+    private Long gameId;
+    private Integer quantity;
+
+    public UpdateCartItemRequest() {
+    }
+
+    public Long getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(Long gameId) {
+        this.gameId = gameId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/game/GameDto.java">
+package boardgames_shop.dto.game;
+
+import java.math.BigDecimal;
+
+public class GameDto {
+
+    private Long id;
+    private String name;
+    private BigDecimal price;
+    private String description;
+    private boolean active;
+
+    public GameDto() {}
+
+    public GameDto(Long id, String name, BigDecimal price, String description, boolean active) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.active = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/history/OrderHistoryResponse.java">
+package boardgames_shop.dto.history;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class OrderHistoryResponse {
+
+    private Long orderId;
+    private LocalDateTime date;
+    private String status;
+    private BigDecimal total;
+
+    private List<Item> items;
+
+    public static class Item {
+
+        private String name;
+        private Integer quantity;
+        private BigDecimal price;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(Integer quantity) {
+            this.quantity = quantity;
+        }
+
+        public BigDecimal getPrice() {
+            return price;
+        }
+
+        public void setPrice(BigDecimal price) {
+            this.price = price;
+        }
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/manager/ManagerOrderResponse.java">
+package boardgames_shop.dto.manager;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class ManagerOrderResponse {
+
+    private Long id;
+    private String clientName;
+    private String managerName;
+    private LocalDateTime orderDate;
+    private LocalDateTime deliveryDate;
+    private String status;
+    private BigDecimal total;
+    private List<Item> items;
+
+    public static class Item {
+        private String name;
+        private Integer quantity;
+        private BigDecimal price;
+
+        public String getName() { return name; }
+        public void setName(String name) { this.name = name; }
+        public Integer getQuantity() { return quantity; }
+        public void setQuantity(Integer quantity) { this.quantity = quantity; }
+        public BigDecimal getPrice() { return price; }
+        public void setPrice(BigDecimal price) { this.price = price; }
+    }
+
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public LocalDateTime getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/manager/UpdateOrderRequest.java">
+package boardgames_shop.dto.manager;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+public class UpdateOrderRequest {
+
+    private BigDecimal total;
+    private LocalDateTime deliveryDate;
+    private String status;
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+    public LocalDateTime getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/profile/ProfileResponse.java">
+package boardgames_shop.dto.profile;
+
+public class ProfileResponse {
+
+    private Long id;
+    private String name;
+    private String email;
+    private String phone;
+    private String birthDate;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/dto/profile/UpdateProfileRequest.java">
+package boardgames_shop.dto.profile;
+
+public class UpdateProfileRequest {
+
+    private String name;
+    private String phone;
+    private String birthDate;
+
+    public UpdateProfileRequest() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/entity/Client.java">
+package boardgames_shop.entity;
+
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "clients")
+public class Client {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    private String fullName;
+
+    private String phone;
+
+    private LocalDate birthDate;
+
+    public Client() {
+    }
+
+    public Client(User user, String fullName, String phone, LocalDate birthDate) {
+        this.user = user;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.birthDate = birthDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/entity/Employee.java">
+package boardgames_shop.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "employees")
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    private String fullName;
+
+    private String phone;
+
+    private String position;
+
+    public Employee() {
+    }
+
+    public Employee(User user, String fullName, String phone, String position) {
+        this.user = user;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.position = position;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/entity/Game.java">
+package boardgames_shop.entity;
+
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
+
+@Entity
+@Table(name = "games")
+public class Game {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    private BigDecimal price;
+
+    @Column(length = 2000)
+    private String description;
+
+    @Column(nullable = false)
+    private boolean active = true;
+
+    public Game() {
+    }
+
+    public Game(String name, BigDecimal price, String description) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.active = true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/entity/Order.java">
+package boardgames_shop.entity;
+
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Table(name = "orders")
+public class Order {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
+    private LocalDateTime orderDate;
+
+    private LocalDateTime deliveryDate;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
+    private BigDecimal totalPrice;
+
+    @OneToMany(
+            mappedBy = "order",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<OrderItem> items;
+
+    public Order() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public LocalDateTime getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/entity/OrderItem.java">
+package boardgames_shop.entity;
+
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
+
+@Entity
+@Table(name = "order_items")
+public class OrderItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "game_id")
+    private Game game;
+
+    private Integer quantity;
+
+    private BigDecimal priceAtPurchase;
+
+    public OrderItem() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public BigDecimal getPriceAtPurchase() {
+        return priceAtPurchase;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setPriceAtPurchase(BigDecimal priceAtPurchase) {
+        this.priceAtPurchase = priceAtPurchase;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/entity/OrderStatus.java">
+package boardgames_shop.entity;
+
+public enum OrderStatus {
+
+    NOT_CREATED,    //Не оформлен
+    CREATED,        //Оформлен
+    IN_TRANSIT,     //В пути
+    PICKUP_POINT,   //В пункте выдачи
+    COMPLETED,      //Завершен
+    CANCELLED       //Отменен
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/entity/Role.java">
+package boardgames_shop.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "roles")
+public class Role {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String name;
+
+    public Role() {
+    }
+
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/entity/User.java">
+package boardgames_shop.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    public User() {
+    }
+
+    public User(String email, String password, Role role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/repository/ClientRepository.java">
+package boardgames_shop.repository;
+
+import boardgames_shop.entity.Client;
+import boardgames_shop.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+import java.util.Optional;
+public interface ClientRepository extends JpaRepository<Client, Long> {
+
+    Optional<Client> findByUser(User user);
+    Optional<Client> findByUserId(Long userId);
+
+    @Query("SELECT c FROM Client c WHERE c.id != 5 ORDER BY c.id ASC")
+    List<Client> findAllActiveClients();
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/repository/EmployeeRepository.java">
+package boardgames_shop.repository;
+
+import boardgames_shop.entity.Client;
+import boardgames_shop.entity.Employee;
+import boardgames_shop.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+import java.util.Optional;
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+    Optional<Employee> findByUser(User user);
+    Optional<Employee> findByUserId(Long userId);
+
+    @Query("SELECT c FROM Employee c WHERE c.id != 4 ORDER BY c.id ASC")
+    List<Employee> findAllActiveEmployees();
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/repository/GameRepository.java">
+package boardgames_shop.repository;
+
+import boardgames_shop.entity.Game;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.awt.print.Pageable;
+import java.util.List;
+
+public interface GameRepository extends JpaRepository<Game, Long> {
+    // Для каталога (только активные, сортировка по id)
+    List<Game> findAllByActiveTrueOrderByIdAsc();
+
+    // Для админа (все игры, сортировка по id)
+    List<Game> findAllByOrderByIdAsc();
+
+    @Query("""
+        SELECT g
+        FROM Game g
+        WHERE g.id IN (
+            SELECT g2.id
+            FROM Game g2
+            WHERE g2.active = true
+            ORDER BY g2.id ASC
+        )
+        """)
+    List<Game> findActiveWithPagination(Pageable pageable);
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/repository/OrderItemRepository.java">
+package boardgames_shop.repository;
+
+import boardgames_shop.entity.Order;
+import boardgames_shop.entity.OrderItem;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
+    List<OrderItem> findByOrder(Order order);
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/repository/OrderRepository.java">
+package boardgames_shop.repository;
+
+import boardgames_shop.entity.Client;
+import boardgames_shop.entity.Employee;
+import boardgames_shop.entity.Order;
+import boardgames_shop.entity.OrderStatus;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+public interface OrderRepository extends JpaRepository<Order, Long> {
+
+    @Query("""
+        SELECT DISTINCT o
+        FROM Order o
+        WHERE o.client = (
+            SELECT c FROM Client c WHERE c = :client
+        )
+        """)
+    List<Order> findByClient(@Param("client") Client client);
+//    List<Order> findByClient(Client client);
+    Optional<Order> findByClientAndStatus(Client client, OrderStatus status);
+    List<Order> findByStatus(OrderStatus status);
+//    List<Order> findByClientAndStatusNot(Client client, OrderStatus status);
+    List<Order> findByClientAndStatusNotOrderByOrderDateDesc(Client client, OrderStatus status);
+    List<Order> findByEmployee(Employee employee);
+    List<Order> findByStatusAndEmployeeIsNullOrderByIdAsc(OrderStatus status);
+    List<Order> findByEmployeeOrderByIdAsc(Employee employee);
+    List<Order> findByStatusNot(OrderStatus status);
+    List<Order> findByStatusNotOrderByIdAsc(OrderStatus status);
+
+    // ===== Reports =====
+
+    /**
+     * Все завершённые заказы за диапазон дат (orderDate >= from AND orderDate < to)
+     * Используется для: график по месяцу, статистика за период, сравнение месяцев
+     */
+    @Query("SELECT o FROM Order o WHERE o.status = 'COMPLETED' " +
+            "AND o.orderDate >= :from AND o.orderDate < :to " +
+            "ORDER BY o.orderDate ASC")
+    List<Order> findCompletedBetween(
+            @Param("from") LocalDateTime from,
+            @Param("to")   LocalDateTime to
+    );
+
+    // ===== Фильтр 1: Последние N заказов =====
+    // Подзапрос выбирает ID последних N заказов (по дате, исключая NOT_CREATED),
+    // внешний запрос достаёт полные объекты с сортировкой.
+    // Операнды: подзапрос, ORDER BY, LIMIT (через @Query + нативный LIMIT через JPQL rownum / subquery)
+    @Query("""
+        SELECT DISTINCT o
+        FROM Order o
+        WHERE o.status <> boardgames_shop.entity.OrderStatus.NOT_CREATED
+          AND o.id IN (
+              SELECT o2.id
+              FROM Order o2
+              WHERE o2.status <> boardgames_shop.entity.OrderStatus.NOT_CREATED
+              ORDER BY o2.orderDate DESC
+              LIMIT :limit
+          )
+        ORDER BY o.orderDate DESC
+        """)
+    List<Order> findLastNOrders(@Param("limit") int limit);
+
+    // ===== Фильтр 2: Заказы с несколькими позициями =====
+    // Подзапрос с DISTINCT: выбирает ID заказов, у которых количество
+    // уникальных игр (DISTINCT game_id) больше одной.
+    // Операнды: подзапрос, DISTINCT, HAVING, ORDER BY.
+    @Query("""
+        SELECT o
+        FROM Order o
+        WHERE o.status <> boardgames_shop.entity.OrderStatus.NOT_CREATED
+          AND o.id IN (
+              SELECT DISTINCT oi.order.id
+              FROM OrderItem oi
+              GROUP BY oi.order.id
+              HAVING COUNT(DISTINCT oi.game.id) > 1
+          )
+        ORDER BY o.id ASC
+        """)
+    List<Order> findOrdersWithMultipleItems();
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/repository/RoleRepository.java">
+package boardgames_shop.repository;
+
+import boardgames_shop.entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    Optional<Role> findByName(String name);
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/repository/UserRepository.java">
+package boardgames_shop.repository;
+
+import boardgames_shop.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    Optional<User> findByEmail(String email);
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/security/JwtAuthFilter.java">
+package boardgames_shop.security;
+
+import boardgames_shop.entity.User;
+import boardgames_shop.repository.UserRepository;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+import java.util.List;
+
+@Component
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private final JwtService jwtService;
+    private final UserRepository userRepository;
+
+    public JwtAuthFilter(JwtService jwtService,
+                         UserRepository userRepository) {
+        this.jwtService = jwtService;
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain)
+            throws ServletException, IOException {
+
+        String header = request.getHeader("Authorization");
+        System.out.println("=== JwtAuthFilter ===");
+        System.out.println("Request URI: " + request.getRequestURI());
+        System.out.println("Authorization header: " + header);
+
+        if (header == null || !header.startsWith("Bearer ")) {
+            System.out.println("Missing or invalid Bearer token");
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        String token = header.substring(7);
+        System.out.println("Token: " + token);
+
+        Long userId;
+        String role;
+
+        try {
+            userId = jwtService.getUserId(token);
+            role = jwtService.getRole(token);
+            System.out.println("Extracted userId: " + userId + ", role: " + role);
+        } catch (Exception e) {
+            System.err.println("Token parsing failed: " + e.getMessage());
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        User user = userRepository.findById(userId).orElse(null);
+
+        if (user == null) {
+            System.out.println("User NOT FOUND in DB for id: " + userId);
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        System.out.println("User found: " + user.getEmail() + ", role from DB: " + user.getRole());
+
+        UsernamePasswordAuthenticationToken auth =
+                new UsernamePasswordAuthenticationToken(
+                        user,
+                        null,
+                        List.of(new SimpleGrantedAuthority("ROLE_" + role))
+                );
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
+        System.out.println("Authentication set in SecurityContext with authorities: " + auth.getAuthorities());
+
+        filterChain.doFilter(request, response);
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/security/JwtService.java">
+package boardgames_shop.security;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Service;
+
+import javax.crypto.SecretKey;
+import java.util.Date;
+
+@Service
+public class JwtService {
+
+    private final String SECRET = "VerySecretKeyVerySecretKeyVerySecretKey123456";
+
+    private SecretKey getKey() {
+        return Keys.hmacShaKeyFor(SECRET.getBytes());
+    }
+
+    public String generateToken(Long userId, String role) {
+
+        return Jwts.builder()
+                .claim("userId", userId)
+                .claim("role", role)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .signWith(getKey())
+                .compact();
+    }
+
+    public Claims extractAllClaims(String token) {
+
+        return Jwts.parserBuilder()
+                .setSigningKey(getKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    public Long getUserId(String token) {
+        return extractAllClaims(token).get("userId", Long.class);
+    }
+
+    public String getRole(String token) {
+        return extractAllClaims(token).get("role", String.class);
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/service/AdminService.java">
+package boardgames_shop.service;
+
+import boardgames_shop.dto.admin.*;
+import boardgames_shop.entity.*;
+import boardgames_shop.repository.*;
+import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Arrays;
+
+@Service
+@Transactional
+public class AdminService {
+
+    private final EmployeeRepository employeeRepository;
+    private final ClientRepository clientRepository;
+    private final GameRepository gameRepository;
+    private final OrderRepository orderRepository;
+    private final RoleRepository roleRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public AdminService(
+            EmployeeRepository employeeRepository,
+            ClientRepository clientRepository,
+            GameRepository gameRepository,
+            OrderRepository orderRepository,
+            RoleRepository roleRepository,
+            UserRepository userRepository,
+            PasswordEncoder passwordEncoder
+    ) {
+        this.employeeRepository = employeeRepository;
+        this.clientRepository = clientRepository;
+        this.gameRepository = gameRepository;
+        this.orderRepository = orderRepository;
+        this.roleRepository = roleRepository;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    // Сотрудники
+
+    public List<EmployeeResponse> getEmployees() {
+
+        List<Employee> employees = employeeRepository.findAllActiveEmployees();
+        List<OrderStatus> activeStatuses = Arrays.asList(
+                OrderStatus.CREATED,
+                OrderStatus.IN_TRANSIT,
+                OrderStatus.PICKUP_POINT
+        );
+
+        List<EmployeeResponse> list = new ArrayList<>();
+
+        for (Employee e : employees) {
+
+            EmployeeResponse dto = new EmployeeResponse();
+
+            dto.setId(e.getId());
+            dto.setName(e.getFullName());
+            dto.setEmail(e.getUser().getEmail());
+            dto.setPhone(e.getPhone());
+            dto.setPosition(e.getPosition());
+            dto.setRole(e.getUser().getRole().getName());
+
+            // Считаем активные заказы: всё кроме COMPLETED и CANCELLED
+            long activeCount = orderRepository
+                    .findAll()
+                    .stream()
+                    .filter(o -> o.getEmployee() != null
+                            && o.getEmployee().getId().equals(e.getId())
+                            && activeStatuses.contains(o.getStatus()))
+                    .count();
+
+            dto.setActiveOrdersCount((int) activeCount);
+            list.add(dto);
+        }
+
+        return list;
+    }
+
+    public void createEmployee(CreateEmployeeRequest request) {
+
+        Role role = roleRepository
+                .findByName(request.getRole())
+                .orElseThrow(() -> new RuntimeException("Role not found: " + request.getRole()));
+
+        User user = new User();
+        user.setEmail(request.getEmail());
+        // Кодируем пароль перед сохранением
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(role);
+
+        userRepository.save(user);
+
+        Employee employee = new Employee();
+        employee.setFullName(request.getName());
+        employee.setPhone(request.getPhone());
+        employee.setPosition(request.getPosition());
+        employee.setUser(user);
+
+        employeeRepository.save(employee);
+    }
+
+    public void deleteEmployee(Long employeeId) {
+        // 1. Найти сотрудника-заглушку (например, id = 1)
+        Employee placeholderEmployee = employeeRepository.findById(4L)
+                .orElseThrow(() -> new RuntimeException("Сотрудник-заглушка с id=1 не найден"));
+
+        // 2. Найти удаляемого сотрудника
+        Employee employeeToDelete = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new RuntimeException("Сотрудник с id=" + employeeId + " не найден"));
+
+        // 3. Переназначить все заказы, закреплённые за этим сотрудником, на заглушку
+        List<Order> orders = orderRepository.findByEmployee(employeeToDelete);
+        for (Order order : orders) {
+            order.setEmployee(placeholderEmployee);
+        }
+        if (!orders.isEmpty()) {
+            orderRepository.saveAll(orders);
+        }
+
+        // 4. Получить связанного пользователя
+        User userToDelete = employeeToDelete.getUser();
+
+        // 5. Если пользователь существует – удаляем его
+        if (userToDelete != null) {
+            // Сначала отвязываем сотрудника от пользователя
+            employeeToDelete.setUser(null);
+            employeeRepository.save(employeeToDelete);
+            // Удаляем пользователя
+            userRepository.delete(userToDelete);
+        }
+
+        // 6. Удаляем сотрудника
+        employeeRepository.delete(employeeToDelete);
+    }
+
+    // Клиенты
+    public List<ClientResponse> getClients() {
+
+        List<Client> clients = clientRepository.findAllActiveClients();
+        List<ClientResponse> list = new ArrayList<>();
+
+        for (Client c : clients) {
+
+            ClientResponse dto = new ClientResponse();
+
+            dto.setId(c.getId());
+            dto.setName(c.getFullName());
+            dto.setEmail(c.getUser().getEmail());
+            dto.setPhone(c.getPhone());
+            dto.setBirthDate(c.getBirthDate());
+
+            list.add(dto);
+        }
+
+        return list;
+    }
+
+
+    public void deleteClient(Long clientId) {
+        // 1. Найти клиента-заглушку (id=5)
+        Client placeholderClient = clientRepository.findById(5L)
+                .orElseThrow(() -> new RuntimeException("Клиент-заглушка с id=5 не найден"));
+
+        // 2. Найти удаляемого клиента
+        Client clientToDelete = clientRepository.findById(clientId)
+                .orElseThrow(() -> new RuntimeException("Клиент с id=" + clientId + " не найден"));
+
+        // 3. Переназначить все заказы удаляемого клиента на заглушку
+        List<Order> orders = orderRepository.findByClient(clientToDelete);
+        for (Order order : orders) {
+            order.setClient(placeholderClient);
+        }
+        if (!orders.isEmpty()) {
+            orderRepository.saveAll(orders);
+        }
+
+        // 4. Получить связанного пользователя
+        User userToDelete = clientToDelete.getUser();
+
+        // 5. Если пользователь существует – удаляем его
+        if (userToDelete != null) {
+            // Сначала отвязываем клиента от пользователя, чтобы не нарушить FK при удалении пользователя
+            clientToDelete.setUser(null);
+            clientRepository.save(clientToDelete);
+            // Удаляем пользователя
+            userRepository.delete(userToDelete);
+        }
+
+        // 6. Удаляем клиента
+        clientRepository.delete(clientToDelete);
+    }
+
+    // Игры
+
+    public List<GameResponse> getGames() {
+        List<Game> games = gameRepository.findAllByOrderByIdAsc();
+        List<GameResponse> list = new ArrayList<>();
+        for (Game g : games) {
+            GameResponse dto = new GameResponse();
+            dto.setId(g.getId());
+            dto.setName(g.getName());
+            dto.setPrice(g.getPrice());
+            dto.setDescription(g.getDescription());
+            dto.setActive(g.isActive());   // важно для интерфейса администратора
+            list.add(dto);
+        }
+        return list;
+    }
+
+    public void deleteGame(Long id) {
+        Game game = gameRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Игра не найдена"));
+        game.setActive(false);
+        gameRepository.save(game);
+    }
+    public void createGame(CreateGameRequest request) {
+        Game game = new Game();
+        game.setName(request.getName());
+        game.setPrice(request.getPrice());
+        game.setDescription(request.getDescription());
+        game.setActive(true);   // явно
+        gameRepository.save(game);
+    }
+
+    public void restoreGame(Long id) {
+        Game game = gameRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Игра не найдена"));
+        game.setActive(true);
+        gameRepository.save(game);
+    }
+
+    public void updateGame(Long id, UpdateGameRequest request) {
+        Game game = gameRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Игра не найдена"));
+        if (request.getName() != null) game.setName(request.getName());
+        if (request.getPrice() != null) game.setPrice(request.getPrice());
+        if (request.getDescription() != null) game.setDescription(request.getDescription());
+        if (request.getActive() != null) game.setActive(request.getActive());
+        gameRepository.save(game);
+    }
+
+
+    // Заказы
+
+    public List<AdminOrderResponse> getOrders() {
+        List<Order> orders = orderRepository.findByStatusNotOrderByIdAsc(OrderStatus.NOT_CREATED);
+        List<AdminOrderResponse> list = new ArrayList<>();
+
+        for (Order o : orders) {
+            AdminOrderResponse dto = new AdminOrderResponse();
+            dto.setId(o.getId());
+
+            // Извлекаем ФИО клиента
+            dto.setClient(o.getClient() != null ? o.getClient().getFullName() : "Удаленный пользователь");
+
+            // Извлекаем ФИО менеджера
+            dto.setManager(o.getEmployee() != null ? o.getEmployee().getFullName() : null);
+
+            dto.setStatus(o.getStatus().name());
+            dto.setOrderDate(o.getOrderDate());
+            dto.setDeliveryDate(o.getDeliveryDate());
+            dto.setTotal(o.getTotalPrice());
+
+            List<OrderItemDto> itemsList = new ArrayList<>();
+
+            if (o.getItems() != null) {
+                // Сортируем список OrderItem по id, как в примере с корзиной
+                List<OrderItem> sortedItems = o.getItems().stream()
+                        .sorted(Comparator.comparing(OrderItem::getId))
+                        .toList();
+
+                // Теперь перебираем уже отсортированный список
+                for (OrderItem item : sortedItems) {
+                    OrderItemDto itemDto = new OrderItemDto();
+                    itemDto.setName(item.getGame().getName());
+                    itemDto.setQuantity(item.getQuantity());
+                    itemDto.setPrice(item.getPriceAtPurchase().intValueExact());
+
+                    itemsList.add(itemDto);
+                }
+            }
+
+            dto.setItems(itemsList);
+            list.add(dto);
+        }
+
+        return list;
+    }
+
+
+    public void updateOrder(Long id, UpdateOrderAdminRequest request) {
+
+        Order order = orderRepository.findById(id).orElseThrow();
+
+        if (request.getManagerId() != null) {
+
+            Employee employee =
+                    employeeRepository
+                            .findById(request.getManagerId())
+                            .orElseThrow();
+
+            order.setEmployee(employee);
+        }
+
+        order.setDeliveryDate(request.getDeliveryDate());
+        order.setStatus(OrderStatus.valueOf(request.getStatus()));
+        order.setTotalPrice(request.getTotal());
+
+        orderRepository.save(order);
+    }
+
+    public void updateEmployee(
+            Long id,
+            UpdateEmployeeRequest request
+    ) {
+
+        Employee employee =
+                employeeRepository.findById(id).orElseThrow();
+
+        employee.setFullName(request.getName());
+        employee.setPhone(request.getPhone());
+        employee.setPosition(request.getPosition());
+
+        Role role =
+                roleRepository
+                        .findByName(request.getRole())
+                        .orElseThrow();
+
+        employee.getUser().setRole(role);
+
+        employeeRepository.save(employee);
+    }
+
+    public void updateClient(
+            Long id,
+            UpdateClientRequest request
+    ) {
+
+        Client client =
+                clientRepository.findById(id).orElseThrow();
+
+        client.setFullName(request.getName());
+        client.setPhone(request.getPhone());
+        client.setBirthDate(request.getBirthDate());
+
+        clientRepository.save(client);
+    }
+
+
+    public List<AdminOrderResponse> getLastOrders(int limit) {
+        List<Order> orders = orderRepository.findLastNOrders(limit);
+        return mapOrdersToResponse(orders);
+    }
+
+    // ===== Фильтр: заказы с несколькими позициями =====
+
+    public List<AdminOrderResponse> getOrdersWithMultipleItems() {
+        List<Order> orders = orderRepository.findOrdersWithMultipleItems();
+        return mapOrdersToResponse(orders);
+    }
+
+    // ===== Приватный маппер (вынести логику из getOrders()) =====
+    // Заменить тело getOrders() на:
+    //   return mapOrdersToResponse(orderRepository.findByStatusNotOrderByIdAsc(OrderStatus.NOT_CREATED));
+    // И добавить этот метод:
+
+    private List<AdminOrderResponse> mapOrdersToResponse(List<Order> orders) {
+        List<AdminOrderResponse> list = new ArrayList<>();
+
+        for (Order o : orders) {
+            AdminOrderResponse dto = new AdminOrderResponse();
+            dto.setId(o.getId());
+            dto.setClient(o.getClient() != null ? o.getClient().getFullName() : "Удаленный пользователь");
+            dto.setManager(o.getEmployee() != null ? o.getEmployee().getFullName() : null);
+            dto.setStatus(o.getStatus().name());
+            dto.setOrderDate(o.getOrderDate());
+            dto.setDeliveryDate(o.getDeliveryDate());
+            dto.setTotal(o.getTotalPrice());
+
+            List<OrderItemDto> itemsList = new ArrayList<>();
+            if (o.getItems() != null) {
+                List<OrderItem> sortedItems = o.getItems().stream()
+                        .sorted(Comparator.comparing(OrderItem::getId))
+                        .toList();
+                for (OrderItem item : sortedItems) {
+                    OrderItemDto itemDto = new OrderItemDto();
+                    itemDto.setName(item.getGame().getName());
+                    itemDto.setQuantity(item.getQuantity());
+                    itemDto.setPrice(item.getPriceAtPurchase().intValueExact());
+                    itemsList.add(itemDto);
+                }
+            }
+            dto.setItems(itemsList);
+            list.add(dto);
+        }
+        return list;
+    }
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/service/AuthService.java">
+package boardgames_shop.service;
+
+import boardgames_shop.dto.auth.LoginRequest;
+import boardgames_shop.dto.auth.LoginResponse;
+import boardgames_shop.dto.auth.RegisterRequest;
+import boardgames_shop.entity.*;
+import boardgames_shop.repository.ClientRepository;
+import boardgames_shop.repository.RoleRepository;
+import boardgames_shop.repository.UserRepository;
+import boardgames_shop.security.JwtService;
+import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+@Service
+@Transactional
+public class AuthService {
+
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final ClientRepository clientRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+
+    public AuthService(UserRepository userRepository,
+                       RoleRepository roleRepository,
+                       ClientRepository clientRepository,
+                       PasswordEncoder passwordEncoder,
+                       JwtService jwtService) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.clientRepository = clientRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+    }
+
+    public void register(RegisterRequest request) {
+
+        Role role = roleRepository.findByName("BUYER")
+                .orElseThrow(() -> new RuntimeException("Role not found"));
+
+        User user = new User();
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(role);
+
+        user = userRepository.save(user);
+
+        Client client = new Client();
+        client.setUser(user);
+        client.setFullName(request.getName());
+        client.setPhone(request.getPhone());
+        client.setBirthDate(request.getBirthDate());
+
+        clientRepository.save(client);
+    }
+
+    public LoginResponse login(LoginRequest request) {
+
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid password");
+        }
+
+        String token = jwtService.generateToken(
+                user.getId(),
+                user.getRole().getName()
+        );
+
+        return new LoginResponse(
+                user.getId(),
+                user.getRole().getName(),
+                token
+        );
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/service/CartService.java">
+package boardgames_shop.service;
+
+import boardgames_shop.dto.cart.AddToCartRequest;
+import boardgames_shop.dto.cart.CartResponse;
+import boardgames_shop.dto.cart.UpdateCartItemRequest;
+import boardgames_shop.entity.*;
+import boardgames_shop.repository.*;
+import jakarta.transaction.Transactional;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@Transactional
+public class CartService {
+
+    private final OrderRepository orderRepository;
+    private final GameRepository gameRepository;
+    private final ClientRepository clientRepository;
+
+    public CartService(
+            OrderRepository orderRepository,
+            GameRepository gameRepository,
+            ClientRepository clientRepository
+    ) {
+        this.orderRepository = orderRepository;
+        this.gameRepository = gameRepository;
+        this.clientRepository = clientRepository;
+    }
+
+    public void addToCart(AddToCartRequest request) {
+        System.out.println(">>> addToCart called");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("Principal class: " + auth.getPrincipal().getClass().getName());
+        User user = (User) auth.getPrincipal();
+        System.out.println("User ID from principal: " + user.getId());
+
+        Client client = clientRepository.findByUserId(user.getId())
+                .orElseThrow();
+
+        Order cart = orderRepository
+                .findByClientAndStatus(client, OrderStatus.NOT_CREATED)
+                .orElseGet(() -> createCart(client));
+
+        Game game = gameRepository.findById(request.getGameId())
+                .orElseThrow();
+        if (!game.isActive()) {
+            throw new RuntimeException("Игра временно недоступна для заказа");
+        }
+        Optional<OrderItem> existing = cart.getItems()
+                .stream()
+                .filter(i -> i.getGame().getId().equals(game.getId()))
+                .findFirst();
+
+        if (existing.isPresent()) {
+            existing.get().setQuantity(
+                    existing.get().getQuantity() + request.getQuantity()
+            );
+        } else {
+            OrderItem item = new OrderItem();
+            item.setOrder(cart);
+            item.setGame(game);
+            item.setQuantity(request.getQuantity());
+            item.setPriceAtPurchase(game.getPrice());
+
+            cart.getItems().add(item);
+        }
+
+        orderRepository.save(cart);
+    }
+
+    public CartResponse getCart() {
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Client client = clientRepository.findByUserId(user.getId())
+                .orElseThrow();
+
+        Order cart = orderRepository
+                .findByClientAndStatus(client, OrderStatus.NOT_CREATED)
+                .orElse(null);
+
+        if (cart == null || cart.getItems() == null || cart.getItems().isEmpty()) {
+            // Корзина пуста или её нет
+            CartResponse emptyResponse = new CartResponse();
+            emptyResponse.setItems(new ArrayList<>());
+            emptyResponse.setTotal(BigDecimal.ZERO);
+            return emptyResponse;
+        }
+
+        // Удаляем позиции, у которых игра стала неактивной
+        boolean removed = cart.getItems().removeIf(item -> !item.getGame().isActive());
+        if (removed) {
+            orderRepository.save(cart); // сохраняем корзину после удаления "мёртвых" товаров
+        }
+
+        // Сортируем оставшиеся позиции
+        List<OrderItem> sorted = cart.getItems()
+                .stream()
+                .sorted(Comparator.comparing(OrderItem::getId))
+                .toList();
+
+        CartResponse response = new CartResponse();
+        List<CartResponse.CartItem> items = new ArrayList<>();
+        BigDecimal total = BigDecimal.ZERO;
+
+        for (OrderItem item : sorted) {
+            CartResponse.CartItem dto = new CartResponse.CartItem();
+            dto.setGameId(item.getGame().getId());
+            dto.setName(item.getGame().getName());
+            dto.setQuantity(item.getQuantity());
+            dto.setPrice(item.getPriceAtPurchase());
+
+            total = total.add(
+                    item.getPriceAtPurchase()
+                            .multiply(BigDecimal.valueOf(item.getQuantity()))
+            );
+
+            items.add(dto);
+        }
+
+        response.setItems(items);
+        response.setTotal(total);
+        return response;
+    }
+
+    private Order createCart(Client client) {
+        Order order = new Order();
+        order.setClient(client);
+        order.setStatus(OrderStatus.NOT_CREATED);
+        order.setOrderDate(LocalDateTime.now());
+        order.setItems(new ArrayList<>());
+        return orderRepository.save(order);
+    }
+
+    public void checkout() {
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Client client = clientRepository.findByUserId(user.getId())
+                .orElseThrow();
+
+        Order cart = orderRepository
+                .findByClientAndStatus(client, OrderStatus.NOT_CREATED)
+                .orElseThrow(() -> new RuntimeException("Корзина пуста"));
+
+        if (cart.getItems() == null || cart.getItems().isEmpty()) {
+            throw new RuntimeException("Корзина пуста");
+        }
+
+        // Проверка: все товары должны быть активны (можно вызвать getCart(), который уже чистит, но лучше явно проверить)
+        for (OrderItem item : cart.getItems()) {
+            if (!item.getGame().isActive()) {
+                throw new RuntimeException("Игра '" + item.getGame().getName() + "' больше недоступна для заказа. Удалите её из корзины.");
+            }
+        }
+
+        cart.setStatus(OrderStatus.CREATED);
+        cart.setOrderDate(LocalDateTime.now());
+        cart.setTotalPrice(calculateTotal(cart));
+
+        orderRepository.save(cart);
+    }
+
+    private BigDecimal calculateTotal(Order order) {
+        BigDecimal total = BigDecimal.ZERO;
+        for (OrderItem item : order.getItems()) {
+            total = total.add(
+                    item.getPriceAtPurchase()
+                            .multiply(BigDecimal.valueOf(item.getQuantity()))
+            );
+        }
+        return total;
+    }
+
+    public void updateQuantity(UpdateCartItemRequest request) {
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Client client = clientRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        Order cart = orderRepository
+                .findByClientAndStatus(client, OrderStatus.NOT_CREATED)
+                .orElseThrow();
+
+        OrderItem target = null;
+        for (OrderItem item : cart.getItems()) {
+            if (item.getGame().getId().equals(request.getGameId())) {
+                target = item;
+                break;
+            }
+        }
+
+        if (target == null) {
+            throw new RuntimeException("Товар не найден в корзине");
+        }
+
+        if (request.getQuantity() <= 0) {
+            cart.getItems().remove(target);
+        } else {
+            target.setQuantity(request.getQuantity());
+        }
+
+        orderRepository.save(cart);
+    }
+
+    public void removeItem(Long gameId) {
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Client client = clientRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        Order cart = orderRepository
+                .findByClientAndStatus(client, OrderStatus.NOT_CREATED)
+                .orElseThrow();
+
+        cart.getItems().removeIf(
+                item -> item.getGame().getId().equals(gameId)
+        );
+
+        orderRepository.save(cart);
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/service/GameService.java">
+package boardgames_shop.service;
+
+import boardgames_shop.dto.game.GameDto;
+import boardgames_shop.entity.Game;
+import boardgames_shop.repository.GameRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@Transactional
+public class GameService {
+
+    private final GameRepository gameRepository;
+
+    public GameService(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
+
+    public List<GameDto> getActiveGames() {
+        List<Game> games = gameRepository.findAllByActiveTrueOrderByIdAsc();
+        return games.stream()
+                .map(g -> new GameDto(
+                        g.getId(),
+                        g.getName(),
+                        g.getPrice(),
+                        g.getDescription(),
+                        true   // активна
+                ))
+                .collect(Collectors.toList());
+    }
+
+    public GameDto getGameById(Long id) {
+        Game game = gameRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Game not found"));
+        // Для покупателя: если игра неактивна – выдавать ошибку
+        if (!game.isActive()) {
+            throw new RuntimeException("Игра временно недоступна");
+        }
+        return new GameDto(
+                game.getId(),
+                game.getName(),
+                game.getPrice(),
+                game.getDescription(),
+                game.isActive()
+        );
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/service/HistoryService.java">
+package boardgames_shop.service;
+
+import boardgames_shop.entity.*;
+import boardgames_shop.dto.history.OrderHistoryResponse;
+import boardgames_shop.repository.*;
+import jakarta.transaction.Transactional;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@Transactional
+public class HistoryService {
+
+    private final OrderRepository orderRepository;
+    private final ClientRepository clientRepository;
+
+    public HistoryService(
+            OrderRepository orderRepository,
+            ClientRepository clientRepository
+    ) {
+        this.orderRepository = orderRepository;
+        this.clientRepository = clientRepository;
+    }
+
+    public List<OrderHistoryResponse> getHistory() {
+
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Client client = clientRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        List<Order> orders = orderRepository
+                .findByClientAndStatusNotOrderByOrderDateDesc(
+                        client,
+                        OrderStatus.NOT_CREATED
+                );
+
+        List<OrderHistoryResponse> response = new ArrayList<>();
+
+        for (Order order : orders) {
+
+            OrderHistoryResponse dto =
+                    new OrderHistoryResponse();
+
+            dto.setOrderId(order.getId());
+            dto.setDate(order.getOrderDate());
+            dto.setStatus(order.getStatus().name());
+
+            dto.setTotal(
+                    order.getItems()
+                            .stream()
+                            .map(i -> i.getPriceAtPurchase()
+                                    .multiply(BigDecimal.valueOf(i.getQuantity())))
+                            .reduce(BigDecimal.ZERO, BigDecimal::add)
+            );
+
+            List<OrderHistoryResponse.Item> items =
+                    new ArrayList<>();
+
+            for (OrderItem item : order.getItems()) {
+
+                OrderHistoryResponse.Item i =
+                        new OrderHistoryResponse.Item();
+
+                i.setName(item.getGame().getName());
+                i.setQuantity(item.getQuantity());
+                i.setPrice(item.getPriceAtPurchase());
+
+                items.add(i);
+            }
+
+            dto.setItems(items);
+
+            response.add(dto);
+        }
+
+        return response;
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/service/ManagerService.java">
+package boardgames_shop.service;
+
+
+import boardgames_shop.entity.*;
+import boardgames_shop.dto.manager.*;
+import boardgames_shop.repository.*;
+import jakarta.transaction.Transactional;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@Transactional
+public class ManagerService {
+
+    private final OrderRepository orderRepository;
+    private final EmployeeRepository employeeRepository;
+
+    public ManagerService(
+            OrderRepository orderRepository,
+            EmployeeRepository employeeRepository
+    ) {
+        this.orderRepository = orderRepository;
+        this.employeeRepository = employeeRepository;
+    }
+
+    public void assignOrder(Long orderId) {
+
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Employee employee = employeeRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        Order order = orderRepository
+                .findById(orderId)
+                .orElseThrow();
+
+        order.setEmployee(employee);
+        order.setStatus(OrderStatus.IN_TRANSIT);
+
+        if (order.getTotalPrice() == null) {
+            order.setTotalPrice(calculateTotal(order));
+        }
+
+        orderRepository.save(order);
+    }
+
+    private java.math.BigDecimal calculateTotal(Order order) {
+        java.math.BigDecimal total = java.math.BigDecimal.ZERO;
+        for (OrderItem item : order.getItems()) {
+            total = total.add(
+                    item.getPriceAtPurchase()
+                            .multiply(java.math.BigDecimal.valueOf(item.getQuantity()))
+            );
+        }
+        return total;
+    }
+
+
+
+    public void updateOrder(Long id, UpdateOrderRequest request) {
+
+        Order order = orderRepository.findById(id).orElseThrow();
+
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Employee employee = employeeRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        if (order.getEmployee() == null ||
+                !order.getEmployee().getId().equals(employee.getId())) {
+            throw new RuntimeException("Нет доступа к заказу");
+        }
+
+        order.setStatus(OrderStatus.valueOf(request.getStatus()));
+        order.setDeliveryDate(request.getDeliveryDate());
+
+        if (request.getTotal() != null) {
+            order.setTotalPrice(request.getTotal());
+        }
+
+        orderRepository.save(order);
+    }
+    private ManagerOrderResponse mapOrder(Order order) {
+
+        ManagerOrderResponse dto = new ManagerOrderResponse();
+
+        dto.setId(order.getId());
+        dto.setClientName(order.getClient().getFullName());
+
+        if (order.getEmployee() != null) {
+            dto.setManagerName(order.getEmployee().getFullName());
+        } else {
+            dto.setManagerName(null);
+        }
+
+        dto.setOrderDate(order.getOrderDate());
+        dto.setDeliveryDate(order.getDeliveryDate());
+        dto.setStatus(order.getStatus().name());
+        dto.setTotal(order.getTotalPrice());
+
+        List<ManagerOrderResponse.Item> items = new ArrayList<>();
+        for (OrderItem item : order.getItems()) {
+            ManagerOrderResponse.Item i = new ManagerOrderResponse.Item();
+            i.setName(item.getGame().getName());
+            i.setQuantity(item.getQuantity());
+            i.setPrice(item.getPriceAtPurchase());
+            items.add(i);
+        }
+        dto.setItems(items);
+
+        return dto;
+    }
+
+    public ManagerOrderResponse getOrderById(Long id) {
+        Order order = orderRepository.findById(id).orElseThrow();
+        return mapOrder(order);
+    }
+
+    private List<ManagerOrderResponse> mapOrders(List<Order> orders) {
+        List<ManagerOrderResponse> list = new ArrayList<>();
+        for (Order order : orders) {
+            list.add(mapOrder(order));
+        }
+        return list;
+    }
+
+    public List<ManagerOrderResponse> getNewOrders() {
+        List<Order> orders = orderRepository
+                .findByStatusAndEmployeeIsNullOrderByIdAsc(OrderStatus.CREATED);
+        return mapOrders(orders);
+    }
+
+    public List<ManagerOrderResponse> getMyOrders() {
+
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Employee employee = employeeRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        List<Order> orders = orderRepository
+                .findByEmployeeOrderByIdAsc(employee);
+
+        return mapOrders(orders);
+    }
+
+    public List<ManagerOrderResponse> getAllOrders() {
+
+        List<Order> orders = orderRepository
+                .findByStatusNot(OrderStatus.NOT_CREATED);
+
+        return mapOrders(orders);
+    }
+
+
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/service/ProfileService.java">
+package boardgames_shop.service;
+
+import boardgames_shop.entity.Client;
+import boardgames_shop.entity.User;
+import boardgames_shop.dto.profile.ProfileResponse;
+import boardgames_shop.dto.profile.UpdateProfileRequest;
+import boardgames_shop.repository.ClientRepository;
+import boardgames_shop.repository.UserRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+@Service
+@Transactional
+public class ProfileService {
+
+    private final ClientRepository clientRepository;
+    private final UserRepository userRepository;
+
+    public ProfileService(
+            ClientRepository clientRepository,
+            UserRepository userRepository
+    ) {
+        this.clientRepository = clientRepository;
+        this.userRepository = userRepository;
+    }
+
+    public ProfileResponse getProfile() {
+
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Client client = clientRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        ProfileResponse response = new ProfileResponse();
+
+        response.setId(client.getId());
+        response.setName(client.getFullName());
+        response.setEmail(user.getEmail());
+        response.setPhone(client.getPhone());
+        response.setBirthDate(client.getBirthDate().toString());
+
+        return response;
+    }
+
+    public void updateProfile(UpdateProfileRequest request) {
+
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Client client = clientRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        client.setFullName(request.getName());
+        client.setPhone(request.getPhone());
+        client.setBirthDate(java.time.LocalDate.parse(request.getBirthDate()));
+
+        clientRepository.save(client);
+    }
+
+    public void deleteProfile() {
+
+        User user = (User) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        Client client = clientRepository
+                .findByUserId(user.getId())
+                .orElseThrow();
+
+        clientRepository.delete(client);
+        userRepository.delete(user);
+    }
+}
+</file>
+
+<file path="src/main/java/boardgames_shop/service/ReportsService.java">
+package boardgames_shop.service;
+
+import boardgames_shop.dto.admin.*;
+import boardgames_shop.entity.Order;
+import boardgames_shop.entity.OrderItem;
+import boardgames_shop.repository.OrderRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.YearMonth;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Service
+@Transactional
+public class ReportsService {
+
+    private final OrderRepository orderRepository;
+
+    public ReportsService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+
+
+    // 1. График по месяцу
+    //    GET /api/admin/reports/sales/month?year=YYYY&month=MM
+    //    Возвращает массив из N дней (N = кол-во дней в месяце),
+    //    отсутствующие дни -> totalAmount = 0
+    public List<SalesDayDto> getMonthlySales(int year, int month) {
+
+        YearMonth ym = YearMonth.of(year, month);
+        LocalDateTime from = ym.atDay(1).atStartOfDay();
+        LocalDateTime to   = ym.atEndOfMonth().atTime(23, 59, 59);
+
+        List<Order> orders = orderRepository.findCompletedBetween(from, to);
+
+        // Группируем сумму по дате
+        Map<LocalDate, BigDecimal> sumByDay = new LinkedHashMap<>();
+        for (Order o : orders) {
+            LocalDate day = o.getOrderDate().toLocalDate();
+            sumByDay.merge(day, o.getTotalPrice(), BigDecimal::add);
+        }
+
+        // Заполняем все дни месяца, пропущенные → 0
+        List<SalesDayDto> result = new ArrayList<>();
+        for (int d = 1; d <= ym.lengthOfMonth(); d++) {
+            LocalDate date = ym.atDay(d);
+            result.add(new SalesDayDto(date, sumByDay.getOrDefault(date, BigDecimal.ZERO)));
+        }
+
+        return result;
+    }
+
+    // 2. Детализация дня
+    //    GET /api/admin/reports/sales/day?date=YYYY-MM-DD
+    //    Возвращает все COMPLETED заказы за конкретный день
+    public List<SalesOrderDto> getDaySales(LocalDate date) {
+
+        LocalDateTime from = date.atStartOfDay();
+        LocalDateTime to   = date.atTime(23, 59, 59);
+
+        List<Order> orders = orderRepository.findCompletedBetween(from, to);
+
+        return orders.stream()
+                .sorted(Comparator.comparing(Order::getId))
+                .map(o -> {
+                    SalesOrderDto dto = new SalesOrderDto();
+                    dto.setId(o.getId());
+                    dto.setTotal(o.getTotalPrice());
+
+                    List<ItemDto> items = new ArrayList<>();
+                    if (o.getItems() != null) {
+                        o.getItems().stream()
+                                .sorted(Comparator.comparing(OrderItem::getId))
+                                .forEach(item -> {
+                                    BigDecimal linePrice = item.getPriceAtPurchase()
+                                            .multiply(BigDecimal.valueOf(item.getQuantity()));
+                                    items.add(new ItemDto(
+                                            item.getGame().getName(),
+                                            item.getQuantity(),
+                                            linePrice
+                                    ));
+                                });
+                    }
+                    dto.setItems(items);
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
+
+    // 3. Отчёт за произвольный период
+    //    GET /api/admin/reports/sales/period?from=YYYY-MM-DD&to=YYYY-MM-DD
+    public PeriodStatsDto getPeriodStats(LocalDate from, LocalDate to) {
+
+        List<Order> orders = orderRepository.findCompletedBetween(
+                from.atStartOfDay(),
+                to.atTime(23, 59, 59)
+        );
+
+        BigDecimal totalRevenue = orders.stream()
+                .map(Order::getTotalPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        int ordersCount = orders.size();
+
+        BigDecimal averageCheck = ordersCount > 0
+                ? totalRevenue.divide(BigDecimal.valueOf(ordersCount), 2, RoundingMode.HALF_UP)
+                : BigDecimal.ZERO;
+
+        PeriodStatsDto dto = new PeriodStatsDto();
+        dto.setTotalRevenue(totalRevenue);
+        dto.setOrdersCount(ordersCount);
+        dto.setAverageCheck(averageCheck);
+        return dto;
+    }
+
+    // 4. Сравнение месяца с предыдущим
+    //    GET /api/admin/reports/sales/compare?year=YYYY&month=MM
+    //    Считает текущий месяц vs предыдущий
+    public CompareDto compareMonths(int year, int month) {
+
+        YearMonth current  = YearMonth.of(year, month);
+        YearMonth previous = current.minusMonths(1);
+
+        PeriodStatsDto curr = getPeriodStats(current.atDay(1), current.atEndOfMonth());
+        PeriodStatsDto prev = getPeriodStats(previous.atDay(1), previous.atEndOfMonth());
+
+        CompareDto dto = new CompareDto();
+        dto.setRevenuePercent(calcPercent(curr.getTotalRevenue(), prev.getTotalRevenue()));
+        dto.setOrdersPercent(calcPercent(
+                BigDecimal.valueOf(curr.getOrdersCount()),
+                BigDecimal.valueOf(prev.getOrdersCount())
+        ));
+        dto.setAverageCheckPercent(calcPercent(curr.getAverageCheck(), prev.getAverageCheck()));
+        return dto;
+    }
+
+    // 5. Топ игра месяца по количеству проданных единиц
+    //    GET /api/admin/reports/sales/top-game?year=YYYY&month=MM
+    public TopGameDto getTopGame(int year, int month) {
+
+        YearMonth ym = YearMonth.of(year, month);
+        List<Order> orders = orderRepository.findCompletedBetween(
+                ym.atDay(1).atStartOfDay(),
+                ym.atEndOfMonth().atTime(23, 59, 59)
+        );
+
+        Map<String, Integer> soldByGame = new HashMap<>();
+
+        for (Order o : orders) {
+            if (o.getItems() == null) continue;
+            for (OrderItem item : o.getItems()) {
+                String gameName = item.getGame().getName();
+                soldByGame.merge(gameName, item.getQuantity(), Integer::sum);
+            }
+        }
+
+        if (soldByGame.isEmpty()) {
+            return new TopGameDto("—", 0);
+        }
+
+        Map.Entry<String, Integer> top = soldByGame.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .orElseThrow();
+
+        return new TopGameDto(top.getKey(), top.getValue());
+    }
+
+    // 6. Средний чек за месяц
+    //    GET /api/admin/reports/sales/average-check?year=YYYY&month=MM
+    public AverageCheckDto getAverageCheck(int year, int month) {
+
+        YearMonth ym = YearMonth.of(year, month);
+        PeriodStatsDto stats = getPeriodStats(ym.atDay(1), ym.atEndOfMonth());
+        return new AverageCheckDto(stats.getAverageCheck());
+    }
+
+    // Вспомогательный метод: ((current - previous) / previous) * 100
+    // При previous = 0 → возвращает 0
+    private double calcPercent(BigDecimal current, BigDecimal previous) {
+        if (previous == null || previous.compareTo(BigDecimal.ZERO) == 0) return 0.0;
+        return current.subtract(previous)
+                .divide(previous, 4, RoundingMode.HALF_UP)
+                .multiply(BigDecimal.valueOf(100))
+                .doubleValue();
+    }
+}
+</file>
+
+<file path="src/main/resources/application.properties">
+spring.application.name=boardgames-shop
+
+# INIT DATASOURCE
+init.datasource.url=jdbc:postgresql://localhost:5432/postgres
+init.datasource.username=postgres
+init.datasource.password=TestSecret123
+
+# DATASOURCE
+spring.datasource.url=jdbc:postgresql://localhost:5432/boardgame_shop
+spring.datasource.username=AdminRoma
+spring.datasource.password=Roma21
+
+# Hibernate / JPA
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# SQL
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+logging.level.org.springframework.security=DEBUG
+</file>
+
+<file path="src/main/resources/data.sql">
+-- =========================
+-- ROLES
+-- =========================
+
+INSERT INTO roles (id, name) VALUES
+(1, 'BUYER'),
+(2, 'MANAGER'),
+(3, 'ADMIN');
+
+-- =========================
+-- USERS
+-- =========================
+
+INSERT INTO users (id, email, password, role_id) VALUES
+(1, 'ivan@mail.com', '$2a$10$E6wEd5ZRv4FySOsZGki.WOSobQpWCg6iYPXQCvhhEdNuHH8acTCyK', 1),
+(2, 'john@gmail.com', '$2a$10$pnwv81N01nJ.nRFdqr7ulusGSjFCx7reqtMbJqrhPaQyRE1c7GQ7q', 2),
+(3, 'romanzinin2005@gmail.com', '$2a$10$pnwv81N01nJ.nRFdqr7ulusGSjFCx7reqtMbJqrhPaQyRE1c7GQ7q', 1),
+(6, 'bob@gmail.com', '$2a$10$eWMdhJqB.M9PNKs0b7zfP.HzDwPEd0HTgL4lNYnQKiMgk0hJesiBC', 1),
+(8, 'danvor@gmail.com', '$2a$10$pnwv81N01nJ.nRFdqr7ulusGSjFCx7reqtMbJqrhPaQyRE1c7GQ7q', 3),
+(9, 'deleted_user@gmail.com', '$2a$10$EJ84Vug8i/mn1iBFuahPRuw/RlrpXCtAvqvI1vSk19QRbSSTlMixy', 1),
+(13, 'deleted_employee@gmail.com', '$2a$10$Cz.u6DKnT2BJ8PKk9zXAj.xANiwNIqK1GutgpoM2wU2HZ6owPdy8.', 2),
+(15, 'tirion@gmail.com', '$2a$10$aPtn9lK535ZvdNBgfGGbDO2vY3as8pgHGHgA8k5nKt/bXZzignVoG', 2);
+
+-- =========================
+-- CLIENTS
+-- =========================
+
+INSERT INTO clients (id, birth_date, full_name, phone, user_id) VALUES
+(1, '1995-05-20', 'Иван Петров', '+7 (999) 999-99-98', 1),
+(2, '2005-01-17', 'Роман', '+7 (910) 876-49-52', 3),
+(3, '2016-06-20', 'Bob', '+7-910-876-49-52', 6),
+(5, '2026-04-24', 'Удаленный пользователь', '————————————', 9);
+
+-- =========================
+-- EMPLOYEES
+-- =========================
+
+INSERT INTO employees (id, full_name, phone, position, user_id) VALUES
+(1, 'Джон Сноу', '+7-999-888-77-66', 'WORKING', 2),
+(2, 'Данвор Кроу', '+7-910-111-22-33', 'WORKING', 8),
+(4, 'Удаленный сотрудник', '—————————————', 'DAY_OFF', 13),
+(6, 'Тирион', '+7 (999) 888-77-66', 'DAY_OFF', 15);
+
+-- =========================
+-- GAMES
+-- =========================
+
+INSERT INTO games (id, description, name, price, active) VALUES
+(1, 'Игра про покупку улиц', 'Монополия', 1990.00, true),
+(2, 'Игра про захват территории', 'Игра престолов', 6950.00, true),
+(3, 'Игра про развитие', 'Эволюция', 1250.00, true),
+(4, 'Игра про приключения и развитие персонажа', 'Манчкин', 1650.00, true),
+(5, 'Игра про приготовление зелий', 'Зельеварение', 1350.00, false);
+
+-- =========================
+-- ORDERS
+-- =========================
+
+INSERT INTO orders (id, delivery_date, order_date, status, total_price, client_id, employee_id) VALUES
+(1, '2026-04-25', '2026-03-18 19:22:16', 'COMPLETED', 3980.00, 1, 1),
+(2, NULL, '2026-04-18 19:47:53', 'NOT_CREATED', NULL, 1, NULL),
+(3, '2026-04-28', '2026-04-20 16:19:56', 'IN_TRANSIT', 8940.00, 2, 6),
+(4, NULL, '2026-04-20 03:53:14', 'NOT_CREATED', NULL, 3, NULL),
+(6, '2026-04-24', '2026-04-20 16:22:07', 'CANCELLED', 0.00, 2, 6),
+(7, NULL, '2026-04-20 17:50:50', 'CREATED', 3240.00, 2, NULL),
+(8, '2026-04-24', '2026-04-20 18:03:00', 'COMPLETED', 6950.00, 2, 1),
+(9, '2026-04-25', '2026-04-24 16:54:33', 'COMPLETED', 31040.00, 2, 6),
+(10, NULL, '2026-04-23 19:47:51', 'NOT_CREATED', 6950.00, 5, NULL),
+(11, NULL, '2026-04-24 16:55:56', 'NOT_CREATED', NULL, 2, NULL);
+
+-- =========================
+-- ORDER ITEMS
+-- =========================
+
+INSERT INTO order_items (id, price_at_purchase, quantity, game_id, order_id) VALUES
+(1, 1990.00, 2, 1, 1),
+(2, 6950.00, 3, 2, 2),
+(3, 6950.00, 1, 2, 2),
+(5, 6950.00, 1, 2, 4),
+(9, 1990.00, 1, 1, 3),
+(10, 6950.00, 1, 2, 3),
+(11, 1990.00, 2, 1, 6),
+(12, 6950.00, 1, 2, 6),
+(13, 1990.00, 1, 1, 7),
+(14, 1250.00, 1, 3, 7),
+(15, 6950.00, 1, 2, 8),
+(20, 1250.00, 1, 3, 9),
+(21, 6950.00, 4, 2, 9),
+(22, 6950.00, 1, 2, 10),
+(23, 1990.00, 1, 1, 9),
+(24, 6950.00, 1, 2, 11),
+(27, 1650.00, 1, 4, 11);
+</file>
+
+<file path="src/main/resources/schema.sql">
+-- =========================
+-- TABLES
+-- =========================
+
+CREATE TABLE roles (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE users (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role_id BIGINT,
+    CONSTRAINT fk_users_role FOREIGN KEY (role_id) REFERENCES roles(id)
+);
+
+CREATE TABLE clients (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    birth_date DATE,
+    full_name VARCHAR(255),
+    phone VARCHAR(255),
+    user_id BIGINT UNIQUE,
+    CONSTRAINT fk_clients_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE employees (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    full_name VARCHAR(255),
+    phone VARCHAR(255),
+    position VARCHAR(255),
+    user_id BIGINT UNIQUE,
+    CONSTRAINT fk_employees_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE games (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    description VARCHAR(2000),
+    name VARCHAR(255),
+    price NUMERIC(38,2),
+    active BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE orders (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    delivery_date TIMESTAMP,
+    order_date TIMESTAMP,
+    status VARCHAR(50),
+    total_price NUMERIC(38,2),
+    client_id BIGINT,
+    employee_id BIGINT,
+    CONSTRAINT fk_orders_client FOREIGN KEY (client_id) REFERENCES clients(id),
+    CONSTRAINT fk_orders_employee FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+CREATE TABLE order_items (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    price_at_purchase NUMERIC(38,2),
+    quantity INTEGER,
+    game_id BIGINT,
+    order_id BIGINT,
+    CONSTRAINT fk_items_game FOREIGN KEY (game_id) REFERENCES games(id),
+    CONSTRAINT fk_items_order FOREIGN KEY (order_id) REFERENCES orders(id)
+);
+</file>
+
+<file path="src/test/java/boardgames_shop/BoardgamesShopApplicationTests.java">
+package boardgames_shop;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class BoardgamesShopApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+</file>
+
+</files>
