@@ -126,7 +126,7 @@ boardgames_shop/
  
 | Маршрут | Описание |
 |---|---|
-| `/buyer/catalog` | Сетка карточек с живым поиском по названию, скелетон-загрузка |
+| `/buyer/catalog` | Сетка карточек с живым поиском по названию |
 | `/buyer/game/:id` | Карточка игры с описанием и кнопкой «Добавить в заказ» |
 | `/buyer/cart` | Корзина: изменение количества, удаление, подтверждение заказа |
 | `/buyer/orders` | Профиль покупателя + история заказов со статусными бейджами, редактирование профиля |
@@ -157,7 +157,6 @@ boardgames_shop/
 ### Общие UI-решения
  
 - **Тёмная тема** — единый design system на CSS-переменных (`#0f1117` фон, `#a5b4fc` акцент), реализованный вручную без UI-библиотек
-- **Скелетон-загрузка** — shimmer-анимация на всех таблицах, карточках и формах
 - **Трёхсостояние загрузки** — Skeleton → Error → Content в каждом компоненте
 - **Модалки** — закрытие по кнопке и клику вне области, анимации fadeIn/slideUp
 - **Lazy loading** — модули `buyer`, `manager`, `admin` загружаются по требованию
@@ -339,28 +338,11 @@ NOT_CREATED  →  CREATED  →  IN_TRANSIT  →  PICKUP_POINT  →  COMPLETED
 ### 1. Клонировать репозиторий
  
 ```bash
-git clone https://github.com/your-username/boardgames-shop.git
+git clone https://github.com/ZininRo/boardgames-shop.git
 cd boardgames-shop
 ```
  
-### 2. Настроить переменные окружения
- 
-Скопируйте пример и заполните значения:
- 
-```bash
-cp .env.example .env
-```
- 
-`.env.example`:
-```
-DB_SUPER_PASSWORD=your_postgres_superuser_password
-DB_PASSWORD=your_app_user_password
-JWT_SECRET=your_secret_key_minimum_32_characters
-```
- 
-> ⚠️ Файл `.env` добавлен в `.gitignore` и **никогда не должен попадать в репозиторий**.
- 
-### 3. Запустить бэкенд
+### 2. Запустить бэкенд
  
 ```bash
 mvn spring-boot:run
@@ -373,10 +355,10 @@ mvn spring-boot:run
 4. Выполнит `data.sql` (тестовые данные)
 API будет доступен на `http://localhost:8080`.
  
-### 4. Запустить фронтенд
+### 3. Запустить фронтенд
  
 ```bash
-cd frontend   # папка с Angular-проектом
+cd boardgames-frontend   # папка с Angular-проектом
 npm install
 ng serve
 ```
@@ -385,7 +367,7 @@ ng serve
  
 > Если порт бэкенда отличается от `8080` — обновите константу `api` в файлах сервисов внутри `src/app/core/services/`.
  
-### 5. Войти в приложение
+### 4. Войти в приложение
  
 Откройте `http://localhost:4200/login`. На странице входа есть кнопка **«О проекте»** с готовыми тестовыми учётными данными для каждой роли.
  
@@ -441,18 +423,5 @@ order_items   (id, quantity, price_at_purchase,
 |---|---|---|
 | `danvor@gmail.com` | `12345678` | ADMIN |
 | `john@gmail.com` | `12345678` | MANAGER |
-| `tirion@gmail.com` | `12345678` | MANAGER |
-| `ivan@mail.com` | `12345678` | BUYER |
 | `romanzinin2005@gmail.com` | `12345678` | BUYER |
- 
-**Тестовые игры:**
- 
-| Название | Цена | Статус |
-|---|---|---|
-| Монополия | 1 990 ₽ | активна |
-| Игра престолов | 6 950 ₽ | активна |
-| Эволюция | 1 250 ₽ | активна |
-| Манчкин | 1 650 ₽ | активна |
-| Зельеварение | 1 350 ₽ | неактивна (soft deleted) |
- 
----
+
